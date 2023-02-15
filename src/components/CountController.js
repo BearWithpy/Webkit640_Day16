@@ -1,12 +1,25 @@
 import React from "react"
-import { useDispatch } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 
 const CountController = () => {
     const dispatch = useDispatch()
+    const count = useSelector((state) => state.count)
     return (
         <>
             <fieldset>
                 <h2>Count State Controller</h2>
+                <p>
+                    <input
+                        type="text"
+                        value={count}
+                        onChange={(e) => {
+                            dispatch({
+                                type: "changeCount",
+                                count: e.target.value,
+                            })
+                        }}
+                    />
+                </p>
                 <button
                     onClick={() => {
                         dispatch({ type: "count 증가" })

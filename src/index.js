@@ -25,6 +25,13 @@ function reducer(state = currentState, action) {
     if (action.type === "age 감소") {
         state.age--
     }
+    if (action.type === "changeCount") {
+        state.count = action.count
+    }
+    if (action.type === "changeAge") {
+        state.age = action.age
+    }
+
     const newState = { ...state }
     return newState
 }
