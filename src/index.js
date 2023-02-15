@@ -3,12 +3,13 @@ import ReactDOM from "react-dom/client"
 import "./index.css"
 import App from "./App"
 
+// react-redux 관련 모듈 import
 import { Provider } from "react-redux"
 import { legacy_createStore as createStore } from "redux"
 
 const currentState = { count: 10 }
 
-const reducer = (state = currentState.action) => {
+function reducer(state = currentState, action) {
     if (currentState === undefined) {
         return { count: 10 }
     }
@@ -22,7 +23,7 @@ const reducer = (state = currentState.action) => {
     return newState
 }
 
-let store = createStore(currentState)
+let store = createStore(reducer)
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(<App />)
