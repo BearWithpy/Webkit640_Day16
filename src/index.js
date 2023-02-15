@@ -7,7 +7,7 @@ import App from "./App"
 import { Provider } from "react-redux"
 import { legacy_createStore as createStore } from "redux"
 
-const currentState = { count: 10 }
+const currentState = { count: 10, age: 21 }
 
 function reducer(state = currentState, action) {
     if (currentState === undefined) {
@@ -19,6 +19,12 @@ function reducer(state = currentState, action) {
     if (action.type === "count 감소") {
         state.count--
     }
+    if (action.type === "age 증가") {
+        state.age++
+    }
+    if (action.type === "age 감소") {
+        state.age--
+    }
     const newState = { ...state }
     return newState
 }
@@ -26,4 +32,8 @@ function reducer(state = currentState, action) {
 let store = createStore(reducer)
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
-root.render(<App />)
+root.render(
+    <Provider store={store}>
+        <App />
+    </Provider>
+)
