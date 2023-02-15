@@ -1,16 +1,26 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 import "./App.css"
-import AgeController from "./components/AgeController"
-import CountController from "./components/CountController"
+import ContactPage from "./inc/ContactPage"
 
-import StateView from "./components/StateView"
+import Header from "./inc/Header"
+import MainPage from "./inc/MainPage"
+import PracticePage from "./inc/PracticePage"
+import ReduxPage from "./inc/ReduxPage"
 
 function App() {
     return (
         <div className="App">
-            <h1>Hello World</h1>
-            <StateView />
-            <CountController />
-            <AgeController />
+            <h1>Junsu Day 16</h1>
+            <BrowserRouter>
+                <Header />
+                <Routes>
+                    <Route path="/" element={<MainPage />} />
+                    <Route path="/redux" element={<ReduxPage />} />
+                    <Route path="/prac" element={<PracticePage />} />
+                    {/* <Route path="/redux" element={ReduxPage}/> */}
+                    <Route path="/contact" element={<ContactPage />} />
+                </Routes>
+            </BrowserRouter>
         </div>
     )
 }
